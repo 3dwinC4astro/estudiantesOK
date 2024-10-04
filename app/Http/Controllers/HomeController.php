@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        try {
+            // Intenta retornar la vista 'home'
+            return view('home');
+        } catch (\Exception $e) {
+            // Captura cualquier excepción y retorna una vista de error personalizada
+            return response()->view('errors.custom', ['error' => $e->getMessage()], 500);
+        }
     }
 }
