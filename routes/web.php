@@ -9,8 +9,8 @@ use App\Http\Controllers\EstudianteController;
 Auth::routes();
 
 // Ruta para redirigir a la página de inicio
-Route::get('/', function () {
-    return redirect('/home');
+Route::get('/welcome', function () {
+    return redirect('/welcome');
 });
 
 // Ruta para mostrar la lista de usuarios
