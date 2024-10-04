@@ -8,23 +8,17 @@ use App\Http\Controllers\EstudianteController;
 // Authentication routes
 Auth::routes();
 
-Route::get('/home', function () {
-    return view('home'); // Asegúrate de que la vista `home.blade.php` exista
-})->name('home');
-
+// Ruta para redirigir a la página de inicio
 Route::get('/', function () {
     return redirect('/home');
 });
 
-
-
-
-// Routes for managing roles
-Route::get('home', [UserController::class, 'listUsers'])
+// Ruta para mostrar la lista de usuarios
+Route::get('/home', [UserController::class, 'listUsers'])
     ->middleware('auth')
     ->name('home');
-    
 
+// Rutas para asignar y eliminar roles
 Route::post('home/{userId}/assign-role', [UserController::class, 'assignRole'])
     ->middleware('auth')
     ->name('assign.role');
@@ -35,9 +29,7 @@ Route::post('home/{userId}/remove-role', [UserController::class, 'removeRole'])
 
 // Rutas para la gestión de estudiantes
 Route::middleware(['auth'])->group(function () {
-    // Verificar si el usuario autenticado tiene algún rol
-    Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes'); // Cambiado para usar el controlador
-
+    Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes');
     Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
     Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
     Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
