@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
+     // Método para redirigir a la página de inicio
+    public function redirectToHome()
+    {
+        return redirect()->route('home'); // Redirigir a la ruta 'home'
+    }
     // Method to list all users
     public function listUsers()
     {
