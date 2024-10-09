@@ -9,7 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+<<<<<<< HEAD
     // Método para listar todos los usuarios
+=======
+
+
+     // Método para redirigir a la página de inicio
+    public function redirectToHome()
+    {
+        return redirect()->route('home'); // Redirigir a la ruta 'home'
+    }
+    // Method to list all users
+>>>>>>> 6a97f9bbdee0838868f30bb60d8607070e3082c8
     public function listUsers()
     {
         $users = User::all(); // Obtener todos los usuarios

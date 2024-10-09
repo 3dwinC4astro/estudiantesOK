@@ -8,11 +8,17 @@ use App\Http\Controllers\EstudianteController;
 // Authentication routes
 Auth::routes();
 
+<<<<<<< HEAD
 // Ruta para redirigir a la página de inicio
 Route::get('/', function () {
     return redirect('/home');
 });
 
+=======
+Route::get('/', [UserController::class, 'redirectToHome'])->name('home');
+
+
+>>>>>>> 6a97f9bbdee0838868f30bb60d8607070e3082c8
 // Ruta para mostrar la lista de usuarios
 Route::get('/home', [UserController::class, 'listUsers'])
     ->middleware('auth')
